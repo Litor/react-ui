@@ -50,11 +50,13 @@ class Select extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    let values = toArray(this.props.value, this.props.sep)
     if (nextProps.value !== this.props.value) {
+      values = toArray(nextProps.value, this.props.sep)
       this.setValue(this.formatValue(nextProps.value))
     }
     if (nextProps.data !== this.props.data) {
-      this.setState({ data: this.formatData(nextProps.data) })
+      this.setState({ data: this.formatData(nextProps.data, values) })
     }
   }
 
@@ -139,11 +141,12 @@ class Select extends React.Component {
     return value
   }
 
-  formatData (data, value = this.state.value) {
+  formatData (data, value) {
+    value = value.map(function(d){return d+''});
     if (typeof data === 'function') {
       data.then(res => {
         if (!this.unmounted) {
-          this.setState({ data: this.formatData(res) })
+          this.setState({ data: this.formatData(res, value) })
         }
       })()
       return []

@@ -272,16 +272,17 @@ class Table extends React.Component {
       return null
     }
 
-    let props = {
-      total: total,
-      onChange: (index) => {
-        let data = this.state.data
-        data.forEach(d => {
-          d.$checked = false
-        })
-        this.setState({index, data})
-      }
-    }
+    // let props = {
+    //   total: total,
+    //   onChange: (index) => {
+    //     let data = this.state.data
+    //     data.forEach(d => {
+    //       d.$checked = false
+    //     })
+    //     this.setState({index, data})
+    //   }
+    // }
+    let props = {};
     return React.addons.cloneWithProps(this.props.pagination, props)
   }
 

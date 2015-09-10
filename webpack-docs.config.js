@@ -1,7 +1,7 @@
 module.exports = require("./make-webpack-config")({
   entry: {
-    app: "./docs/src/js/app.jsx",
-    docs: "./docs/src/less/style.less"
+    app: "./src/js/index.js",
+    docs: "./src/less/style.less"
   },
   separateStylesheet: true,
   path: "./docs/dist"

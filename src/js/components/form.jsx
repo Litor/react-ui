@@ -104,7 +104,7 @@ export default class Form extends React.Component {
           return null
         }
         props.ref = child.props.name
-        props.value = this.state.data[child.props.name]
+        props.value = this.state.data[child.props.name] || child.props.value
         if (child.props.equal) {
           props.onValidate = this.equalValidate(child.props.equal, child.props.name)
         }
